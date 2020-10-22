@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class Restaurant extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        //
+        Schema::create('Restaurant', function(Blueprint $table){
+            $table->string('name');
+            $table->string('adress');
+            $table->string('town');
+            $table->string('country');
+            $table->integer('zipCode');
+            $table->integer('review');
+            $table->text('description');
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
+}
