@@ -24,4 +24,4 @@ Route::get('/restaurants', 'RestaurantController@index');
 Route::get('/restaurants/show/{id}','RestaurantController@show');
 
 //Route contact
-Route::get('/restaurants/create','RestaurantController@index');
+Route::get('/restaurants/create','RestaurantController@create');

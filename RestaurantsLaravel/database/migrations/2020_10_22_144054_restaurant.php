@@ -14,7 +14,7 @@ class Restaurant extends Migration
     public function up()
     {
         //
-        Schema::create('Restaurant', function(Blueprint $table){
+        Schema::create('restaurant', function (Blueprint $table) {
             $table->string('name');
             $table->string('adress');
             $table->string('town');
