@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Alays have the route in the right order
+Route::get('/', 'RestoController@index');
+
+Route::get('/post/{id}','RestoController@show');
