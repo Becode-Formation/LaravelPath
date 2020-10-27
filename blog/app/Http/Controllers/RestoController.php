@@ -15,8 +15,8 @@ class RestoController extends Controller
     public function index()
     {
         $restaurant = Resto::get();
-        // return view('blog.index', compact('$restaurant'));
-        dd($restaurant);
+         return view('blog.index', compact('restaurant')); // Pas de $ dans le compact
+        // dd($restaurant);
     }
 
     /**
