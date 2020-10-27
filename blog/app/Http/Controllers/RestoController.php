@@ -12,7 +12,7 @@ class RestoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() 
     {
         $restaurant = Resto::get();
          return view('blog.index', compact('restaurant')); // Pas de $ dans le compact
@@ -26,7 +26,7 @@ class RestoController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog.create');
     }
 
     /**
@@ -37,7 +37,17 @@ class RestoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(),[
+            'title' => 'required|min:5|max:20',
+            'description' => 'max:200'
+        ]);
+
+        $resto = new Resto;
+        $resto->title = $request->title;
+        $resto->description = $request->description;
+        $resto->save();
+        return redirect('/');
+
     }
 
     /**

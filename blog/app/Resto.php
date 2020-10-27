@@ -8,4 +8,5 @@ class Resto extends Model
 {
     //
     protected $table = 'restaurants';
+    protected $fillable = ['title', 'description'];
 }

@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RestoController;
-use App\Resto;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +15,9 @@ use App\Resto;
 
 // Alays have the route in the right order
 Route::get('/', 'RestoController@index');
+
+Route::get('/create', 'RestoController@create');
+
+Route::post('/resto/create', 'RestoController@store');
 
 Route::get('/post/{id}','RestoController@show');
