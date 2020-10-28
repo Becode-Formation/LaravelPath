@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,20 @@ use Illuminate\Support\Facades\Route;
 // Alays have the route in the right order
 Route::get('/', 'RestoController@index');
 
-Route::get('/create', 'RestoController@create');
+Route::group(['middleware' => 'auth'], function (){
+    
+    Route::get('/create', 'RestoController@create');
+    
+    Route::post('/resto/create', 'RestoController@store');
+    
+    Route::get('/post/{id}','RestoController@show');
+    
+    Route::get('/edit/{id}', 'RestoController@edit');
+    
+    Route::patch('/edit/{id}', 'RestoController@update');
+});
 
-Route::post('/resto/create', 'RestoController@store');
+// Authentification stuff
+Auth::routes();
 
-Route::get('/post/{id}','RestoController@show');
-
-Route::get('/edit/{id}', 'RestoController@edit');
-
-Route::patch('/edit/{id}', 'RestoController@update');
+Route::get('/home', 'HomeController@index')->name('home');
