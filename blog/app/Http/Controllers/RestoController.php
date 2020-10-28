@@ -69,9 +69,11 @@ class RestoController extends Controller
      * @param  \App\Resto  $resto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Resto $resto)
+    public function edit(Resto $resto, $id)
     {
-        //
+        $resto = Resto::findOrFail($id);
+
+        return view('blog.edit', compact('resto'));
     }
 
     /**
@@ -81,9 +83,17 @@ class RestoController extends Controller
      * @param  \App\Resto  $resto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Resto $resto)
-    {
-        //
+    public function update(Request $request, Resto $resto, $id)
+    {   
+        // Validate to be sure it's not a malicious script
+        $this->validate(request(), [
+            'title' => 'required|min:5|max:20',
+            'description' => 'max:200'
+        ]);
+
+        // On chercher l'id et on update toutes les requêtes
+        Resto::find($id)->update($request->all());
+        return redirect('/');
     }
 
     /**

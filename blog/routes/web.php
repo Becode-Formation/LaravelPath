@@ -21,3 +21,7 @@ Route::get('/create', 'RestoController@create');
 Route::post('/resto/create', 'RestoController@store');
 
 Route::get('/post/{id}','RestoController@show');
+
+Route::get('/edit/{id}', 'RestoController@edit');
+
+Route::patch('/edit/{id}', 'RestoController@update');
